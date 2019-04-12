@@ -1,4 +1,4 @@
-# Perf little book
+# Linux perf little book
 When talking about `perf` in `Linux`, it actually refers to `2` things:  
 
 a) `Perf_events` (also be called as `perf` for short): a subsystem which was merged into Linux `kernel` since `2.6.31`;  
