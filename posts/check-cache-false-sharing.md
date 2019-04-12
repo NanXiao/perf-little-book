@@ -4,7 +4,7 @@ Generally speaking, cache false sharing is one processor modifies the data in on
 
 Check following code:  
 
-	$ cat false_share.c
+	# cat false_share.c
 	#include <omp.h>
 
 	#define N 100000000
@@ -33,12 +33,12 @@ The size of `sum` array is `64` bytes on my `X64` platform, and resides in one c
 	sum[i] += values[j] >> i;
 It will cause cache false sharing issue. Build and use "`perf c2c record`" command to profile it:  
 
-	$ gcc -fopenmp -g false_share.c -o false_share
-	$ perf c2c record ./false_share
+	# gcc -fopenmp -g false_share.c -o false_share
+	# perf c2c record ./false_share
 
 Use "`perf c2c report`" to analyze it, and "`HITM`" event is the central issue:  
 
-	$ perf c2c report --stdio
+	# perf c2c report --stdio
 	......
 	=================================================
 	            Trace Event Information

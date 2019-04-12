@@ -3,7 +3,7 @@
 `perf mem` command can be used to profile memory access. I.e, `perf mem record` samples while `perf mem report` shows the results. By default, `perf mem record` will count both load and store operations, and `-t` option can be used to specify one of them (e.g, `-t load`). Check following example:  
 
 	# perf mem record ./stream
-  	# perf mem report --stdio
+	# perf mem report --stdio
 	# To display the perf.data header info, please use --header/--header-only options.
 	#
 	#

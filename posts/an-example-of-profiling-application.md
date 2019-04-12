@@ -2,7 +2,7 @@
 
 Let's see a simple example:  
 
-	$ cat add_vec.cpp
+	# cat add_vec.cpp
 	#include <algorithm>
 	#include <iostream>
 	#include <vector>
@@ -41,14 +41,14 @@ Let's see a simple example:
 
 Build and run "`perf record`" command to profile it:  
 
-	$ g++ add_vec.cpp -o add_vec
-	$ perf record ./add_vec
+	# g++ add_vec.cpp -o add_vec
+	# perf record ./add_vec
 	[ perf record: Woken up 1 times to write data ]
 	[ perf record: Captured and wrote 0.003 MB perf.data (27 samples) ]
 
 A "perf.data" file will be generated. Use "`perf report`" command to analyze it:  
 
-	$ perf report
+	# perf report
 	Samples: 27  of event 'cycles:uppp', Event count (approx.): 2149376
 	Overhead  Command  Shared Object     Symbol
 	  33.67%  add_vec  ld-2.28.so        [.] do_lookup_x
@@ -91,11 +91,11 @@ At least from output, `do_lookup_x` in `ld-2.28.so` is sampled mostly. Highlight
 
 If you want to map the assembly code to source code, try to build program with `-g` option:  
 
-	$ g++ add_vec.cpp -g -o add_vec
+	# g++ add_vec.cpp -g -o add_vec
 
 Another useful option of using "`perf record`" is `-g`, which records function call stack information.
 
-	$ perf record -g ./add_vec
+	# perf record -g ./add_vec
 	[ perf record: Woken up 1 times to write data ]
 	[ perf record: Captured and wrote 0.004 MB perf.data (28 samples) ]
 	$ perf report
