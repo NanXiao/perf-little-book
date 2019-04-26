@@ -3,6 +3,7 @@
 * [An example of profiling application](posts/an-example-of-profiling-application.md)
 * [The targets of profiling](posts/the-targets-of-profiling.md)
 * [How to specify monitoring events](posts/how-to-specify-monitoring-events.md)
+* [What is skid](posts/what-is-skid.md)
 * [Count events](posts/count-events.md)
 * [Profile memory access](posts/profile-memory-access.md)
 * [Check cache false sharing](posts/check-cache-false-sharing.md)
