@@ -28,7 +28,7 @@ Check following code:
 	    return 0;
 	}
 
-The size of `sum` array is `64` bytes on my `X64` platform, and resides in one cache line. Because all `8` threads will write it simultaneously:  
+The size of `sum` array is `32` bytes on my `X64` platform, and resides in one cache line. Because all `8` threads will write it simultaneously:  
   
 	sum[i] += values[j] >> i;
 It will cause cache false sharing issue. Build and use "`perf c2c record`" command to profile it:  
