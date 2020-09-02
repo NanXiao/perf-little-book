@@ -1,22 +1,22 @@
 # Record event counts per thread
 
-`perf record` can be used to record event counts for every thread when using `-s` option. Check following multi-thread program:  
+`perf record` can be used to record event counts for every thread when using `-s` option. Check following multi-thread program:
 
 ```
 $ cat sum.c
 #include <omp.h>
 
 #define N 100000000
-#define THRAED_NUM 8
+#define THREAD_NUM 8
 
 int values[N];
 
 int main(void)
 {
-    int sum[THRAED_NUM];
+    int sum[THREAD_NUM];
 
     #pragma omp parallel for
-    for (int i = 0; i < THRAED_NUM; i++)
+    for (int i = 0; i < THREAD_NUM; i++)
     {
         int local_sum;
         for (int j = 0; j < N; j++)
@@ -30,7 +30,7 @@ int main(void)
 }
 ```
 
-Build and use `perf record` to note down event counts for every thread:  
+Build and use `perf record` to note down event counts for every thread:
 
 ```
 # gcc -fopenmp -g sum.c -o sum
@@ -39,7 +39,7 @@ Build and use `perf record` to note down event counts for every thread:
 [ perf record: Captured and wrote 0.404 MB perf.data (8757 samples) ]
 ```
 
-Use `perf report` to analyze it (`-T` option means displaying per-thread event counts):  
+Use `perf report` to analyze it (`-T` option means displaying per-thread event counts):
 
 ```
 # perf report -T
